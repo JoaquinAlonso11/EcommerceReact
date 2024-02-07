@@ -1,6 +1,7 @@
-import "./App.css"
-import { Navbar } from "./Navbar"
-import { Footer } from "./Footer"
+import Counter from "./components/common/Counter"
+import { Navbar } from "./components/layout/Navbar"
+import { ItemListCointainer } from "./components/pages/ItemListCointainer"
+
 function App() {
 
   
@@ -8,11 +9,14 @@ function App() {
   return (
     <div>
       <Navbar />
-      <h1 className="title">Titulo</h1>
-      <h2>Subtitulo</h2>
-      <h2>Algo Mas</h2>
 
-      <Footer />
+      <Counter />
+
+      <ItemListCointainer greeting="Hola como estas? Bienvenido a mi E-commerce" />
+      
+    
+
+      
     </div>
   )
 }
