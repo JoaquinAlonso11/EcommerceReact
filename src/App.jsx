@@ -12,7 +12,7 @@ function App() {
 
     
 
-      <ItemListCointainer greeting="Hola como estas? Bienvenido a mi E-commerce" />
+      <ItemListCointainer greeting="Hola como estás? Bienvenido a mi E-commerce" />
       
     
 
