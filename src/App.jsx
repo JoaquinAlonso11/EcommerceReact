@@ -1,24 +1,15 @@
-
-import { Navbar } from "./components/layout/Navbar"
-import { ItemListCointainer } from "./components/pages/ItemListCointainer"
+import { Navbar } from "./components/layout/Navbar";
+import { ItemCountContainer } from "./components/common/itemCount/ItemCountContainer";
 
 function App() {
-
-  
-
   return (
     <div>
-      <Navbar />
-
-    
-
-      <ItemListCointainer greeting="Hola como estás? Bienvenido a mi E-commerce" />
-      
-    
-
-      
+      <ItemCountContainer stock={4} />
+      <ItemCountContainer stock={5} />
+      <ItemCountContainer stock={3} />
+      <ItemCountContainer stock={6} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
