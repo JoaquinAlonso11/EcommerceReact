@@ -1,23 +1,32 @@
-import { Grid, Typography } from "@mui/material";
-import PropTypes from "prop-types";
-
-const ItemList = ({ nombre, saludar, saludar2 }) => {
+import { Grid } from "@mui/material";
+import { ProductCard } from "../../common/ProductCard";
+const ItemList = ({ products }) => {
   return (
     <div>
       <Grid
         container
-        justifyContent="center"
-        alignItems="center"
+        display={"flex"}
         sx={{
           backgroundColor: { md: "#FFEAEC" },
           minHeight: "99vh",
-          boxShadow: { md: "0 2px 4px rgba(0, 0, 0, 0.1)" },
+          justifyContent: "center",
         }}
       >
-        <Grid item align="center">
-          <h2>Hola {nombre}</h2>
-          <button onClick={saludar}>Saludar</button>
-          <button onClick={saludar2}>Saludar2</button>
+        <Grid item align="center" display={"flex"}>
+          <div>
+            {products.map(({ id, img, title, description, price }) => {
+              return (
+                <ProductCard
+                  key={id}
+                  id={id}
+                  img={img}
+                  title={title}
+                  description={description}
+                  price={price}
+                />
+              );
+            })}
+          </div>
         </Grid>
       </Grid>
     </div>
@@ -25,7 +34,3 @@ const ItemList = ({ nombre, saludar, saludar2 }) => {
 };
 
 export default ItemList;
-
-ItemList.propTypes = {
-  greeting: PropTypes.any.isRequired,
-};

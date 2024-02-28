@@ -1,21 +1,36 @@
 import ItemList from "./ItemList";
+import { getProducts } from "../../../productsMock";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-export const ItemListCointainer = () => {
-  const [items, setItems] = useState([]);
-
-  const [nombre, setNombre] = useState("pepusa");
-
-  const saludar = () => {
-    setNombre("marilyn");
-  };
-  const saludar2 = () => {
-    setNombre("pepusa");
-  };
+export const ItemListContainer = () => {
+  const { category } = useParams();
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log("Confirmo petiicion");
-  }, []);
+    setIsLoading(true);
+    getProducts().then((resp) => {
+      if (category) {
+        const productsFilter = resp.filter(
+          (product) => product.category === category
+        );
+        setProducts(productsFilter);
+      } else {
+        setProducts(resp);
+      }
 
-  return <ItemList nombre={nombre} saludar={saludar} saludar2={saludar2} />;
+      setIsLoading(false);
+    });
+  }, [category]);
+
+  return (
+    <>
+      {isLoading ? (
+        <h2>Cargando productos...</h2>
+      ) : (
+        <ItemList products={products} />
+      )}
+    </>
+  );
 };
